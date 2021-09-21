@@ -56,7 +56,7 @@ def LSR1(w_init, X, y, seed, numIter, mmr, radius, eps, eta, delta_init, epsTR, 
     Y_buffer = collections.deque(maxlen=mmr)
 
     # Method while loop (terminate after numIter or Accuracy 1 achieved)
-    while 1:
+    while k<100:
         gradTemp, acc, xOld = sess.run([dnn.G, dnn.accuracy, dnn.params],
                                        feed_dict={dnn.x: X, dnn.y: y})  # Compute gradient and accuracy
         gard_k = gradTemp[0]

@@ -19,13 +19,15 @@ import pickle
 from S_LSR1 import *
 from LSR1 import *
 from S_LBFGS import *
+from LBFGS import *
 from parameters import *
 from network import *
 from data_generation import *
 import os.path
 import sys
 
-input1 = sys.argv[1]
+#input1 = sys.argv[1]
+input1 = 'LBFGS'
 #input1 = 'LSR1'
 
 
@@ -41,6 +43,10 @@ def main(opt=input1):
 
     elif opt == "SLBFGS":
         S_LBFGS(w_init,X,y,cp.seed,cp.numIter,cp.mmr,
+                cp.radius,cp.eps,cp.alpha_init,cp.cArmijo,cp.rhoArmijo,cp.num_weights,cp.init_sampling_SLBFGS,dnn,sess)
+
+    elif opt == "LBFGS":
+        LBFGS(w_init,X,y,cp.seed,cp.numIter,cp.mmr,
                 cp.radius,cp.eps,cp.alpha_init,cp.cArmijo,cp.rhoArmijo,cp.num_weights,cp.init_sampling_SLBFGS,dnn,sess)
        
 # Get the parameters
