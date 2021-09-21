@@ -17,6 +17,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import pickle
 from S_LSR1 import *
+from LSR1 import *
 from S_LBFGS import *
 from parameters import *
 from network import *
@@ -25,6 +26,7 @@ import os.path
 import sys
 
 input1 = sys.argv[1]
+#input1 = 'LSR1'
 
 
 # ==========================================================================
@@ -33,6 +35,10 @@ def main(opt=input1):
     """Call the selected solver with the selected parameters."""    
     if opt == "SLSR1":
         S_LSR1(w_init,X,y,cp.seed,cp.numIter,cp.mmr,cp.radius,cp.eps,cp.eta,cp.delta_init,cp.epsTR,cp.num_weights,dnn,sess)
+
+    elif opt == "LSR1":
+        LSR1(w_init,X,y,cp.seed,cp.numIter,cp.mmr,cp.radius,cp.eps,cp.eta,cp.delta_init,cp.epsTR,cp.num_weights,dnn,sess)
+
     elif opt == "SLBFGS":
         S_LBFGS(w_init,X,y,cp.seed,cp.numIter,cp.mmr,
                 cp.radius,cp.eps,cp.alpha_init,cp.cArmijo,cp.rhoArmijo,cp.num_weights,cp.init_sampling_SLBFGS,dnn,sess)
